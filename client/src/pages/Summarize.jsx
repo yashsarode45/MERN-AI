@@ -461,6 +461,7 @@ const Summarize = () => {
             <div key={`link-${index}`} className=' relative'>
             <div
               onClick={() => {setArticle(item)
+              setLang(item.language)
               }}
               className='p-3 flex justify-start items-center flex-row bg-white border border-gray-200 gap-3 rounded-lg cursor-pointer pr-10'
             >
