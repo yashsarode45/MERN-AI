@@ -1,0 +1,121 @@
+ <section className="max-w-7xl mx-auto">
+
+      <div className=' mb-3'>
+        <h1 className="font-extrabold text-[#222328] text-4xl">Create</h1>
+        <p className="mt-2 text-[#666e75] text-lg max-w-[500px]">Create imaginative and visually stunning images through DALL-E AI and share them with the community</p>
+      </div>
+
+      <form className='mt-10 max-w-3xl' onSubmit={handleSubmit}>
+
+        {/* Name, prompt, model, image display */}
+        <div className="flex flex-col gap-5">
+          <FormField
+            labelName="Your Name"
+            type="text"
+            name="name"
+            placeholder="John Doe"
+            value={form.name}
+            handleChange={handleChange}
+            
+          />
+
+          <FormField
+            labelName="Prompt"
+            type="text"
+            name="prompt"
+            placeholder="An Impressionist oil painting of sunflowers in a purple vase…"
+            value={form.prompt}
+            handleChange={handleChange}
+            isSurpriseMe
+            handleSurpriseMe={handleSurpriseMe}
+          />
+
+          <div className='flex items-center gap-2 mb-2'>
+              <p className="block text-lg font-medium text-gray-900">Choose Model:</p>
+              <CreatePageDropDown data={models} handleChange={handleChange} form={form} setForm={setForm} />
+          </div>
+          {/* Info About Models */}
+          <div className='flex flex-col bg-lime-300 p-6 gap-2  text-black rounded-md'>
+            <h1 className=' font-bold text-lg'>Note:</h1>
+            <div className='flex flex-col lg:flex-row gap-4'>
+              <div className='  mt-1 border border-black p-2'>
+                <h2 className=' font-medium'>stable-diffusion-2-1</h2>
+                <p>
+                  This is a lighter model, hence generates output comparitively faster but compromises on quality of the image.
+                </p>
+              </div>
+              <div className=' mt-1 border border-black p-2'>
+                <h2 className=' font-medium'>sdxl-wrong-lora</h2>
+                <p>
+                  This is a heavier model, which improves output image quality but takes bit more time.
+                  High demand may result in error or higher delay.
+                </p>
+              </div>
+            </div>
+            
+          </div>
+
+          {/* {console.log("Error handler is", errorHandler)} */}
+          {/* Generated Image Display */}
+          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[30rem] p-3 h-[30rem] flex justify-center items-center">
+            {
+              errorHandler.isError ? (
+                <div className='flex flex-col gap-4 justify-center items-center'>
+                  <i className=' text-red-500  object-contain'><BiSolidError className='w-24 h-24'/></i>
+                  <p className=' text-lg text-gray-900 text-center'>
+                    Error occured while generating the image, please try again or change the model.
+                  </p>
+                  <p className=' text-lg text-red-500'>
+                    Error code: {errorHandler.status}
+                  </p>
+                </div>
+              ) : (<div></div>)
+            }
+            
+            
+            { (form.photo) ? (
+              <img
+                src={form.photo}
+                alt={form.photo}
+                className="w-full h-full object-contain"
+              />
+            ) : !errorHandler.isError && (
+              <img
+                src={preview}
+                alt="preview"
+                className="w-9/12 h-9/12 object-contain opacity-40"
+              />
+            )}
+
+            {generatingImg && (
+              <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
+                <Loader />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Generate Button */}
+        
+              <button
+              type='submit'
+              onClick={generateImage}
+              className=" mt-3 text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              disabled= {generatingImg}
+              >
+                {generatingImg ? 'Generating' : 'Generate'}
+              </button>
+        
+
+        {/* Footer */}
+        <div className="mt-10">
+        <p className="mt-2 text-[#666e75] text-[14px]">Once you have created the image you want, you can share it with others in the community</p>
+          <button
+            type="submit"
+            className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
+            {loading ? 'Sharing...' : 'Share with the Community'}
+          </button>
+        </div>
+      </form>
+    </section>
