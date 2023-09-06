@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DropdownMenu, { DropdownItem, DropdownItemGroup } from '@atlaskit/dropdown-menu';
+
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { AiFillCaretDown } from 'react-icons/ai';
 const DropdownMenuWithSelectedValue = ({data, selectedItem, setSelectedItem, article, setArticle,allArticles, setAllArticles,isLanguageArray }) => {
