@@ -15,6 +15,7 @@
 AITOOLS is a powerful MERN stack web application that offers two primary functions: AI image generation and text summarization and translation. This project leverages Node.js, Express.js, MongoDB, and React.js to provide a seamless user experience for both creative image generation and efficient text processing.
 
 ## Preview
+[View Live Demo](https://mern-ai-mauve.vercel.app/)
 
 ![image](https://github.com/yashsarode45/MERN-AI/assets/65209607/b123204d-8dd7-4dd9-a443-2793117f097c)
 ![image](https://github.com/yashsarode45/MERN-AI/assets/65209607/9edd19e3-60bc-4adf-bcb5-b3acfdcfa84e)
@@ -24,7 +25,7 @@ AITOOLS is a powerful MERN stack web application that offers two primary functio
 ![image](https://github.com/yashsarode45/MERN-AI/assets/65209607/6d160c68-39cb-42e9-a49f-d5f82666a8cd)
 
 
-[View Live Demo](https://mern-ai-mauve.vercel.app/)
+
 
 ## Features
 
